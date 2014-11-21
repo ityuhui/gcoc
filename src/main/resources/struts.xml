@@ -2,8 +2,10 @@
 "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
+	<constant name="struts.objectFactory" value="spring" />
+	
 	<package name="default" extends="struts-default">
-		<action name="hello" class="com.yuhui.gcoc.hellotest" method="hello">
+		<action name="hello" class="hellotest" method="hello">
 			<result name="success">/success.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
