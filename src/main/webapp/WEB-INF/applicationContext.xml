@@ -6,4 +6,29 @@
     <bean id="hellotest" class="com.yuhui.gcoc.hellotest">
     </bean>
     
+    <bean id="StationAction" class="com.yuhui.gcoc.action.StationAction">
+    	 <property name="stationService" ref="StationService"/>
+    </bean>
+    
+    <bean id="StationService" class="com.yuhui.gcoc.service.impl.StationServiceImpl">
+    	  <property name="dataSource">
+                <ref bean="dataSource"/>
+          </property>
+    </bean>
+    
+    
+    <bean id="dataSource" destroy-method="close"
+            class="org.apache.commons.dbcp.BasicDataSource">
+            <property name="driverClassName" value="${jdbc.driverClassName}" />
+            <property name="url" value="${jdbc.url}" />
+            <property name="username" value="${jdbc.username}" />
+            <property name="password" value="${jdbc.password}" />
+     </bean>
+     
+      <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+            <property name="locations">
+                <value>/WEB-INF/jdbc.properties</value>
+            </property>
+      </bean>   
+    
 </beans>

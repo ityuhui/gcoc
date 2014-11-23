@@ -7,10 +7,7 @@
 
 <%@ include file="header.jsp"%>
 
-
-平均油耗
-
-
+加油站
 
 <%@ include file="footer.jsp"%>
 </body>
