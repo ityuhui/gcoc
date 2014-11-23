@@ -12,11 +12,11 @@ import javax.sql.DataSource;
 import org.apache.log4j.Logger;
 
 import com.yuhui.gcoc.bean.Station;
-import com.yuhui.gcoc.service.StationServiceI;
+import com.yuhui.gcoc.service.RecordServiceI;
 
-public class StationServiceImpl implements StationServiceI {
+public class RecordServiceImpl implements RecordServiceI {
 	
-	private static Logger logger = Logger.getLogger(StationServiceImpl.class);  
+	private static Logger logger = Logger.getLogger(RecordServiceImpl.class);  
 	
 	private DataSource dataSource ;
 
@@ -28,14 +28,14 @@ public class StationServiceImpl implements StationServiceI {
 		this.dataSource = dataSource;
 	}
 
-	public List<Station> getStationList(){
-		
+	@Override
+	public List getRecordList() {
 		List<Station> list = new ArrayList<Station>();
 		
 		try {
 			Connection con = dataSource.getConnection();
 			Statement stmt = con.createStatement();
-			String query = "select * from gcoc_gas_station";
+			String query = "select * from gcoc_record";
 			ResultSet rs=stmt.executeQuery(query);
 			while(rs.next()){
 				list.add(new Station((int)rs.getObject("id"),(String)rs.getObject("name")));
@@ -46,4 +46,5 @@ public class StationServiceImpl implements StationServiceI {
 		}
 		return list;
 	}
+
 }

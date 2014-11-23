@@ -2,15 +2,20 @@
     xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:schemaLocation ="http://www.springframework.org/schema/beans 
     http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
-
-    <bean id="hellotest" class="com.yuhui.gcoc.hellotest">
-    </bean>
     
     <bean id="StationAction" class="com.yuhui.gcoc.action.StationAction">
     	 <property name="stationService" ref="StationService"/>
     </bean>
     
     <bean id="StationService" class="com.yuhui.gcoc.service.impl.StationServiceImpl">
+    	  <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+    <bean id="RecordAction" class="com.yuhui.gcoc.action.RecordAction">
+    	 <property name="recordService" ref="RecordService"/>
+    </bean>
+    
+    <bean id="RecordService" class="com.yuhui.gcoc.service.impl.RecordServiceImpl">
     	  <property name="dataSource" ref="dataSource"/>
     </bean>
     

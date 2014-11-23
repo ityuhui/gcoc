@@ -1,9 +1,19 @@
 package com.yuhui.gcoc.bean;
 
 public class Station {
+	private int sid;
+	public int getSid() {
+		return sid;
+	}
+
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
+
 	private String name;
 
-	public Station(String name){
+	public Station(int sid,String name){
+		setSid(sid);
 		setName(name);
 	}
 	

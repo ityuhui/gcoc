@@ -5,12 +5,14 @@
 	<constant name="struts.objectFactory" value="spring" />
 	
 	<package name="default" namespace="/" extends="json-default">
-		<action name="hello" class="hellotest" method="hello">
-			<result name="success">/success.jsp</result>
-			<result name="error">/error.jsp</result>
-		</action>
 		
 		<action name="getStationList" class="StationAction" method="getStationList">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		
+		<action name="getRecordList" class="RecordAction" method="getRecordList">
 			<result type="json">
 				<param name="root">dataMap</param>
 			</result>
