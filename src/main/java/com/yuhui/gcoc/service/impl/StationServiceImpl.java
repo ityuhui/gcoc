@@ -38,7 +38,6 @@ public class StationServiceImpl implements StationServiceI {
 			String query = "select * from gcoc_gas_station";
 			ResultSet rs=stmt.executeQuery(query);
 			while(rs.next()){
-				logger.error(rs.getObject("name"));
 				list.add(new Station((String)rs.getObject("name")));
 			}
 		} catch (SQLException e) {

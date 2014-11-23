@@ -11,9 +11,7 @@
     </bean>
     
     <bean id="StationService" class="com.yuhui.gcoc.service.impl.StationServiceImpl">
-    	  <property name="dataSource">
-                <ref bean="dataSource"/>
-          </property>
+    	  <property name="dataSource" ref="dataSource"/>
     </bean>
     
     
