@@ -7,14 +7,7 @@ public class Grecord {
 	private int rid;
 	private Timestamp ytime;
 	private String location_str;
-	public String getLocation_str() {
-		return location_str;
-	}
 
-
-	public void setLocation_str(String location_str) {
-		this.location_str = location_str;
-	}
 	private int current_km;
 	private int gas_before;
 	private int quantity;
@@ -22,9 +15,15 @@ public class Grecord {
 	private BigDecimal total_price;
 	
 	public Grecord(int rid,Timestamp ytime,String location_str,int current_km,int gas_before,int quantity,int gas_label,BigDecimal total_price){
-
+		setRid(rid);
+		setYtime(ytime);
+		setLocation_str(location_str);
+		setCurrent_km(current_km);
+		setGas_before(gas_before);
+		setQuantity(quantity);
+		setGas_label(gas_label);
+		setTotal_price(total_price);
 	}
-	
 	
 	public int getRid() {
 		return rid;
@@ -67,6 +66,12 @@ public class Grecord {
 	}
 	public void setTotal_price(BigDecimal total_price) {
 		this.total_price = total_price;
+	}
+	public String getLocation_str() {
+		return location_str;
+	}
+	public void setLocation_str(String location_str) {
+		this.location_str = location_str;
 	}
 
 }

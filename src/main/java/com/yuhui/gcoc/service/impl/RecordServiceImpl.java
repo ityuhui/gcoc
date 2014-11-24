@@ -1,9 +1,11 @@
 package com.yuhui.gcoc.service.impl;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import javax.sql.DataSource;
 
 import org.apache.log4j.Logger;
 
+import com.yuhui.gcoc.bean.Grecord;
 import com.yuhui.gcoc.bean.Station;
 import com.yuhui.gcoc.service.RecordServiceI;
 
@@ -30,15 +33,26 @@ public class RecordServiceImpl implements RecordServiceI {
 
 	@Override
 	public List getRecordList() {
-		List<Station> list = new ArrayList<Station>();
+		List<Grecord> list = new ArrayList<Grecord>();
 		
 		try {
 			Connection con = dataSource.getConnection();
 			Statement stmt = con.createStatement();
-			String query = "select * from gcoc_record";
+			String query = "select r.id,r.ytime,r.current_km,r.gas_before,r.quantity,r.gas_label,r.total_price,s.name as station_str "
+							+ "from gcoc_record r,gcoc_gas_station s where r.location_id = s.id";
 			ResultSet rs=stmt.executeQuery(query);
 			while(rs.next()){
-				list.add(new Station((int)rs.getObject("id"),(String)rs.getObject("name")));
+				Grecord rcd = new Grecord(
+						(int)rs.getObject("id"),
+				  (Timestamp)rs.getObject("ytime"),
+					 (String)rs.getObject("station_str"),
+						(int)rs.getObject("current_km"),
+						(int)rs.getObject("gas_before"),
+						(int)rs.getObject("quantity"),
+						(int)rs.getObject("gas_label"),
+				 (BigDecimal)rs.getObject("total_price")
+						);
+				list.add(rcd);
 			}
 		} catch (SQLException e) {
 			logger.error(e.getMessage());
