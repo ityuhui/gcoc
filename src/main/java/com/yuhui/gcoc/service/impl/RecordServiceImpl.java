@@ -39,7 +39,7 @@ public class RecordServiceImpl implements RecordServiceI {
 			Connection con = dataSource.getConnection();
 			Statement stmt = con.createStatement();
 			String query = "select r.id,r.ytime,r.current_km,r.gas_before,r.quantity,r.gas_label,r.total_price,s.name as station_str "
-							+ "from gcoc_record r,gcoc_gas_station s where r.location_id = s.id";
+							+ "from gcoc_record r,gcoc_gas_station s where r.location_id = s.id order by ytime ";
 			ResultSet rs=stmt.executeQuery(query);
 			while(rs.next()){
 				Grecord rcd = new Grecord(
