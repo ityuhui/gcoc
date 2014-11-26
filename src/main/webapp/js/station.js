@@ -4,8 +4,18 @@ $(document).ready(function(){
 　　
 	getStationList();
 
+	$("#addBtn").bind("click",showAddDialog);
+	$("#closeDialogBtn").bind("click",closeAddDialog);
 });
 
+
+var showAddDialog = function() {
+	$.fn.showWarningDialog($("#addDialog"));
+}
+
+var closeAddDialog = function() {
+	$.fn.hideWarningDialog($("#addDialog"));
+}
 
 
 var getStationList = function() {
