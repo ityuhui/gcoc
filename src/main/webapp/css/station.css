@@ -1,0 +1,28 @@
+#addDialog {
+	width:  320px;
+	height: 240px;
+	background-color: white;
+	color: black;
+}
+
+.adTitle {
+	margin: 10px;
+	height: 10%;
+}
+
+.adMain {
+	margin: 20px;
+	height: 45%;
+}
+
+.adBtnArea {
+	margin: 10px;
+	height: 20%
+}
+
+.sepLine {
+	height:1px;
+	width:100%;
+	background:#DCDCDC;
+	overflow:hidden;
+}

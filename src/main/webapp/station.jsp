@@ -2,6 +2,7 @@
 <html>
 <head>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/station.css" rel="stylesheet">
 	<script src="js/jquery-2.1.1.min.js"></script>
 	<script src="js/dialog.js"></script>
 	<script src="js/station.js"></script>
@@ -24,13 +25,16 @@
 
 <div id="addDialog" style="display:none">
 	
-	<div id="adTitle">添加加油站</div>
-	<div id="adMain">
+	<div class="adTitle">添加加油站</div>
+	<div class="sepLine"></div>
+	<div class="adMain">
 		<label>名称：</label>
 		<input />
 	</div>
-	<div id="adBtnArea">
-		<button id="closeDialogBtn" class="btn btn-primary btn-sm">关闭对话框</button>
+	<div class="sepLine"></div>
+	<div class="adBtnArea">
+		<button id="okDialogBtn" class="btn btn-primary btn-sm">添加</button>
+		<button id="closeDialogBtn" class="btn btn-primary btn-sm">关闭</button>
 	</div>
 </div>
 

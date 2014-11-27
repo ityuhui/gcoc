@@ -65,7 +65,6 @@ $.fn.showWarningDialog = function(dialog) {
 		"top" : "50%",
 		"margin-left" : "-250px",
 		"margin-top" : "-100px",
-		"border" : "solid 3px #ccc",
 		"z-index" : 6000
 	});
 	dialog.show();

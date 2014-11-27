@@ -54,6 +54,7 @@ public class RecordServiceImpl implements RecordServiceI {
 						);
 				list.add(rcd);
 			}
+			con.close();
 		} catch (SQLException e) {
 			logger.error(e.getMessage());
 			e.printStackTrace();
