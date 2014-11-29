@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.yuhui.gcoc.bean.Station;
 import com.yuhui.gcoc.service.StationServiceI;
 
 public class StationAction {
@@ -18,11 +19,17 @@ public class StationAction {
 		this.stationService = stationService;
 	}
 
-	public Map<String,List> dataMap = new HashMap<String,List>();
+	public Map<String,List<Station>> dataMap = new HashMap<String,List<Station>>();
 	
 	public String getStationList(){
-		List list = stationService.getStationList();
+		List<Station> list = stationService.getStationList();
 		dataMap.put("list", list);
+		return "success";
+	}
+	
+	public String addNewStation(){
+		Station s = new Station("atest");
+		stationService.addNewStation(s);
 		return "success";
 	}
 }

@@ -17,6 +17,11 @@ public class Station {
 		setName(name);
 	}
 	
+	public Station(String name){
+		setSid(-1);
+		setName(name);
+	}
+	
 	public String getName() {
 		return name;
 	}

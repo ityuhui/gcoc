@@ -29,7 +29,7 @@
 	<div class="sepLine"></div>
 	<div class="adMain">
 		<label>名称：</label>
-		<input />
+		<input type="text" id="stationName">
 	</div>
 	<div class="sepLine"></div>
 	<div class="adBtnArea">

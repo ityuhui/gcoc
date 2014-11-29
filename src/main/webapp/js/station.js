@@ -6,6 +6,7 @@ $(document).ready(function(){
 
 	$("#addBtn").bind("click",showAddDialog);
 	$("#closeDialogBtn").bind("click",closeAddDialog);
+	$("#okDialogBtn").bind("click",okAddDialog);
 });
 
 
@@ -15,6 +16,32 @@ var showAddDialog = function() {
 
 var closeAddDialog = function() {
 	$.fn.hideWarningDialog($("#addDialog"));
+}
+
+var okAddDialog = function() {
+	var stationName = $('#stationName').val();
+	
+	if( "undefine" == typeof(stationName) || 0 == stationName.length){
+		alert("请输入加油站名称");
+	}else{
+		$.post("addNewStation",
+			{	"stationName":stationName
+			},
+			function(retvalue){
+				var restr = retvalue['result'];
+				var showMsg = "添加失败";
+				if( restr!= null && 'success'== restr  ){
+					showMsg = "添加成功";
+				}
+				else{
+					showMsg = "添加失败";
+				}
+				alert(showMsg);
+				closeAddDialog();
+			},
+			"json"
+		);
+	}
 }
 
 

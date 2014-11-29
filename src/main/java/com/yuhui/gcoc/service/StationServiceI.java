@@ -2,6 +2,9 @@ package com.yuhui.gcoc.service;
 
 import java.util.List;
 
+import com.yuhui.gcoc.bean.Station;
+
 public interface StationServiceI {
-	public List getStationList();
+	public List<Station> getStationList();
+	public boolean addNewStation(Station s);
 }

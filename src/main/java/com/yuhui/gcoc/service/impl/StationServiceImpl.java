@@ -47,4 +47,8 @@ public class StationServiceImpl implements StationServiceI {
 		}
 		return list;
 	}
+	
+	public boolean addNewStation(Station s){
+		return true;
+	}
 }

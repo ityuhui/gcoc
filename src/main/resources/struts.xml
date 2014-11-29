@@ -12,6 +12,12 @@
 			</result>
 		</action>
 		
+		<action name="addNewStation" class="StationAction" method="addNewStation">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		
 		<action name="getRecordList" class="RecordAction" method="getRecordList">
 			<result type="json">
 				<param name="root">dataMap</param>
