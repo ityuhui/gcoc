@@ -1,19 +1,22 @@
-
+var opstr = "add";
 
 $(document).ready(function(){
 　　
-	getStationList();
-	
 	$("#addBtn").bind("click",showAddDialog);
 	$("#closeDialogBtn").bind("click",closeAddDialog);
 	$("#okDialogBtn").bind("click",okAddDialog);
-
+	
+	$("#modifyBtn").bind("click",showModifyDialog);
+	
+	
+	getStationList();
+	
 });
-
-
 	
 	
 var showAddDialog = function() {
+	opstr = 'add';
+	$('.adTitle').text('新增加油站');
 	$.fn.showWarningDialog($("#addDialog"));
 }
 
@@ -21,7 +24,34 @@ var closeAddDialog = function() {
 	$.fn.hideWarningDialog($("#addDialog"));
 }
 
+var showModifyDialog = function() {
+
+	var selectObj = $("input[name='tdOptRadios']:checked");
+	var selectId = selectObj.val();
+	
+	if(selectId){
+		opstr = 'modify';
+		$('.adTitle').text('修改加油站信息');
+		var selectTr = selectObj.parent().parent();
+		$('#mofifyid').html(selectId);
+		$('#stationName').val(selectTr.find('td#name').text());
+		
+		$.fn.showWarningDialog($("#addDialog"));
+	}else{
+		alert("请选择一个加油站!");
+	}
+}
+
+
 var okAddDialog = function() {
+	if( 'add' == opstr){
+		addTaskFunc();
+	}else{
+		modifyTaskFunc();
+	}
+}
+
+var addTaskFunc = function() {
 	var stationName = $('#stationName').val();
 	
 	if( "undefine" == typeof(stationName) || 0 == stationName.length){
@@ -48,6 +78,37 @@ var okAddDialog = function() {
 	}
 }
 
+
+var modifyTaskFunc = function(){
+
+	var modifyid = $('#mofifyid').text();
+	
+	var stationName = $('#stationName').val();
+	
+	if( "undefine" == typeof(stationName) || 0 == stationName.length){
+		alert("请输入加油站信息！");
+	} else {
+		$.post("updateStationInfo",
+			{	"station.name":stationName,
+				'station.sid':modifyid
+			},
+			function(retvalue){
+				var restr = retvalue['result'];
+				var showMsg = "修改失败";
+				if( restr!= null && 'success'== restr  ){
+					showMsg = "修改成功";
+				}
+				else{
+					showMsg = "修改失败";
+				}
+				alert(showMsg);
+				closeAddDialog();
+				getStationList();
+			},
+			"json"
+		);
+	}
+}
 
 var getStationList = function() {
 	$.getJSON("getStationList",function(json){

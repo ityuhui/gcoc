@@ -49,4 +49,14 @@ public class StationAction {
 		resMap.put("result", res);
 		return "success";
 	}
+	
+	public String updateStationInfo(){
+		boolean result = stationService.updateStationInfo(station);
+		String res = "fail";
+		if(result){
+			res = "success";
+		}
+		resMap.put("result", res);
+		return "success";
+	}
 }

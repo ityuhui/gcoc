@@ -28,13 +28,16 @@
 	<div class="adTitle">添加加油站</div>
 	<div class="sepLine"></div>
 	<div class="adMain">
-		<label>名称：</label>
-		<input type="text" id="stationName">
+		<div id="mofifyid" style='display:none;'></div>
+		<div>
+			<label for="stationName">名称：</label>
+			<input type="text" id="stationName">
+		</div>
 	</div>
 	<div class="sepLine"></div>
 	<div class="adBtnArea">
-		<button id="okDialogBtn" class="btn btn-primary btn-sm">添加</button>
-		<button id="closeDialogBtn" class="btn btn-primary btn-sm">关闭</button>
+		<button id="okDialogBtn" class="btn btn-primary btn-sm">确认</button>
+		<button id="closeDialogBtn" class="btn btn-primary btn-sm">取消</button>
 	</div>
 </div>
 

@@ -1,6 +1,7 @@
 package com.yuhui.gcoc.service.impl;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -51,19 +52,41 @@ public class StationServiceImpl implements StationServiceI {
 	public boolean addNewStation(Station station){
 		boolean ret = false;
 		try {
-			Connection con = dataSource.getConnection();
-			Statement stmt = con.createStatement();
-			String query = "insert into gcoc_gas_station (name) values ('" + station.getName() + "') ";
-			int affectLine=stmt.executeUpdate(query);
+			Connection conn = dataSource.getConnection();
+			String sql = "insert into gcoc_gas_station (name) values ( ? ) ";
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setString(1, station.getName());
+			
+			int affectLine=ps.executeUpdate();
 			if( affectLine>0 ){
 				ret = true;
 			}
-			con.close();
+			conn.close();
 		} catch (SQLException e) {
 			logger.error(e.getMessage());
 			e.printStackTrace();
 		}		
 		
+		return ret;
+	}
+	
+	public boolean updateStationInfo(Station station){
+		boolean ret = false;
+		try {
+			Connection conn = dataSource.getConnection();
+			String sql = "update gcoc_gas_station set name=? where id=?";
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setString(1, station.getName());
+			ps.setInt(2, station.getSid());
+			int affectLine=ps.executeUpdate();
+			if( affectLine>0 ){
+				ret = true;
+			}
+			conn.close();
+		} catch (SQLException e) {
+			logger.error(e.getMessage());
+			e.printStackTrace();
+		}	
 		return ret;
 	}
 }
