@@ -3,13 +3,16 @@
 $(document).ready(function(){
 　　
 	getStationList();
-
+	
 	$("#addBtn").bind("click",showAddDialog);
 	$("#closeDialogBtn").bind("click",closeAddDialog);
 	$("#okDialogBtn").bind("click",okAddDialog);
+
 });
 
 
+	
+	
 var showAddDialog = function() {
 	$.fn.showWarningDialog($("#addDialog"));
 }
@@ -25,7 +28,7 @@ var okAddDialog = function() {
 		alert("请输入加油站名称");
 	}else{
 		$.post("addNewStation",
-			{	"stationName":stationName
+			{	"station.name":stationName
 			},
 			function(retvalue){
 				var restr = retvalue['result'];
@@ -38,6 +41,7 @@ var okAddDialog = function() {
 				}
 				alert(showMsg);
 				closeAddDialog();
+				getStationList();
 			},
 			"json"
 		);

@@ -14,7 +14,7 @@
 		
 		<action name="addNewStation" class="StationAction" method="addNewStation">
 			<result type="json">
-				<param name="root">dataMap</param>
+				<param name="root">resMap</param>
 			</result>
 		</action>
 		

@@ -11,7 +11,11 @@ public class Station {
 	}
 
 	private String name;
-
+	
+	public Station(){
+		
+	}
+	
 	public Station(int sid,String name){
 		setSid(sid);
 		setName(name);

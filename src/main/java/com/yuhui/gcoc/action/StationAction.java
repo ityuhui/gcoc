@@ -18,8 +18,20 @@ public class StationAction {
 	public void setStationService(StationServiceI stationService) {
 		this.stationService = stationService;
 	}
+	
+	private Station station;
+
+	public Station getStation() {
+		return station;
+	}
+
+	public void setStation(Station station) {
+		this.station = station;
+	}
 
 	public Map<String,List<Station>> dataMap = new HashMap<String,List<Station>>();
+	
+	public Map<String,String> resMap = new HashMap<String,String>();
 	
 	public String getStationList(){
 		List<Station> list = stationService.getStationList();
@@ -28,8 +40,13 @@ public class StationAction {
 	}
 	
 	public String addNewStation(){
-		Station s = new Station("atest");
-		stationService.addNewStation(s);
+
+		boolean result = stationService.addNewStation(station);
+		String res = "fail";
+		if(result){
+			res = "success";
+		}
+		resMap.put("result", res);
 		return "success";
 	}
 }

@@ -48,7 +48,22 @@ public class StationServiceImpl implements StationServiceI {
 		return list;
 	}
 	
-	public boolean addNewStation(Station s){
-		return true;
+	public boolean addNewStation(Station station){
+		boolean ret = false;
+		try {
+			Connection con = dataSource.getConnection();
+			Statement stmt = con.createStatement();
+			String query = "insert into gcoc_gas_station (name) values ('" + station.getName() + "') ";
+			int affectLine=stmt.executeUpdate(query);
+			if( affectLine>0 ){
+				ret = true;
+			}
+			con.close();
+		} catch (SQLException e) {
+			logger.error(e.getMessage());
+			e.printStackTrace();
+		}		
+		
+		return ret;
 	}
 }
